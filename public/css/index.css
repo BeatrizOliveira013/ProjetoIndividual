@@ -4,6 +4,7 @@
   font-family: "Harry-font";
   src: url(../assets/fonts/harry_p/HARRYP__.TTF);
 }
+
 * {
   margin: 0;
   padding: 0;
@@ -19,26 +20,78 @@
   --tamanho-footer: 65px;
 }
 
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Barlow', sans-serif;
+  background-color: #2c2c2c;
+  color: white;
+}
+
 .container {
   display: flex;
   width: 80%;
   margin: auto;
+  flex-direction: column;
+  align-items: center;
 }
 
+/* HEADER */
 .header {
-  height: var(--tamanho-header);
-  border-bottom: 2px solid #FFD700; /* Dourado */
+  border-bottom: 3px solid #740001;
+  background-color: #4A2F27;
+  color: #FFD700;
+  height: auto;
 }
 
 .header .container {
   justify-content: space-between;
   align-items: center;
+  display: flex;
+  padding: 20px 0;
+}
+.header .navbar {
+  width: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  list-style: none;
+  color: #FFD700;
+}
+
+.header .titulo {
+  color: #8B0000;
+  width: fit-content;
+  font-weight: 500;
+  font-family: 'Harry Potter', serif;
+}
+.header a {
+  text-decoration: none;
+  color: #FFD700;
+}
+
+header h1 {
+  margin: 0;
+}
+
+.agora {
+  font-weight: 800;
+}
+
+header {
+  height: var(--tamanho-header);
+  border-bottom: 2px solid #FFD700;
+}
+
+header .container {
+  justify-content: space-between;
+  align-items: center;
   height: 100%;
 }
 
-.header a {
+header a {
   text-decoration: none;
-  color: #FFD700; /* Dourado */
+  color: #FFD700;
 }
 
 .agora {
@@ -46,32 +99,28 @@
 }
 
 .navbar {
-  width: 300px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
   list-style: none;
-  color: #FFD700; /* Dourado */
+  gap: 20px;
 }
 
 .titulo {
-  color: #8B0000; /* Vermelho escuro */
-  width: fit-content;
+  color: #FFD700;
   font-weight: 500;
-  font-family: 'Harry Potter', serif; /* Fonte personalizada */
-}
-
-.header h1 {
-  margin: 0;
+  font-family: 'Harry Potter', serif;
 }
 
 /* BANNER */
-
 .banner {
-  height: var(--tamanho-banner);
-  color: #FFFFFF; /* Branco */
-  background-image: url('../assets/imgs/bg-jelly-fish-para-home.png');
+  padding: 40px 0;
+  color: white;
+  background-image: url("../assets/imgs/bg-castle.avif");
   background-size: cover;
+  background-color: #000000;
+  text-align: center;
+  font-size: 50px;
+  height: 100vh;
 }
 
 .banner .container {
@@ -91,212 +140,83 @@
   font-weight: 800;
 }
 
-/* MISSÃO VISÃO VALORES */
-
-.social {
-  background-color: #e5e5e5;
-  display: flex;
+.banner p {
+  font-size: 24px;
+  margin: 0;
 }
 
-.social .container {
-  justify-content: center;
+.banner span {
+  color: #B22222;
+  font-weight: 800;
 }
 
-.box img {
-  width: 170px;
-}
-
-.social .container .boxes {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  padding: 30px 0;
-}
-
-.social p {
-  text-align: center;
-}
-
-.box {
+.content {
+  padding: 40px 0;
+  background-color: #000000;
+  color: white;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-/* FOOTER */
-
-.footer {
-  background-color: #8B0000; /* Vermelho escuro */
-  height: 150px;
-  color: #FFD700; /* Dourado */
+.content-section {
   display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+  justify-content: center;
+  max-width: 800px;
+}
+
+.text-img {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.content-section.reverse .text-img {
+  flex-direction: row-reverse;
+}
+
+.text-img img {
+  width: 300px;
+  border-radius: 10px;
+}
+
+.text {
+  max-width: 600px;
+  text-align: justify;
+}
+
+.text h2 {
+  color: #FFD700;
+  margin-bottom: 10px;
+}
+
+.text p {
+  text-align: justify;
+}
+
+/* FOOTER */
+.footer {
+  background-color: #4A2F27;
+  height: 150px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-size: 15px;
 }
 
 .footer .container {
   justify-content: center;
-  text-align: center;
-}
-
-.footer .container .version {
-  font-size: 12px;
-}
-
-/* LOGIN */
-
-.login {
-  height: var(--tamanho-login);
-  background-image: url('../assets/imgs/bg-jelly-fish-para-home.png');
-  background-size: cover;
-}
-
-.login .container {
-  justify-content: center;
   align-items: center;
-  height: 100%;
+  color: #FFD700;
 }
 
-.card {
-  width: 50%;
-  background-color: #e5e5e5;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-  color: #8B0000; /* Vermelho escuro */
-  flex-direction: column;
-  height: fit-content;
-  padding: 20px 0;
-}
-
-.card h2 {
-  margin: 0;
-  font-size: 30px;
-}
-
-.formulario {
-  display: flex;
-  height: 90%;
-  width: 80%;
-  justify-content: space-around;
-  flex-direction: column;
-}
-
-.formulario span {
-  font-size: 15px;
-  font-weight: 800;
-}
-
-.formulario input {
-  border: 2px solid #8B0000; /* Vermelho escuro */
-  text-align: center;
-  border-radius: 10px;
+.footer h4 {
   margin: 0;
 }
 
-.formulario select {
-  border: 2px solid #8B0000; /* Vermelho escuro */
-  background-color: white;
-  color: gray;
-  height: 36px;
-  text-align: center;
-  border-radius: 10px;
-  margin: 0;
-}
-
-.campo {
-  display: flex;
-  flex-direction: column;
-  justify-content: start;
-  padding: 5px 0;
-}
-
-.botao {
-  cursor: pointer;
-  font-family: "Barlow", sans-serif;
-  border: 0;
-  border-radius: 5px;
-  font-weight: 600;
-  font-size: 18px;
-  color: #FFFFFF; /* Branco */
-  background-color: #8B0000; /* Vermelho escuro */
-  width: 120px;
-  height: 30px;
-  align-self: center;
-  margin-top: 20px;
-}
-
-.loading-div {
-  width: 50px;
-  display: none;
-}
-
-.loading-div img {
-  height: 50px;
-  width: 50px;
-}
-
-#div_erros_login {
-  display: none;
-}
-
-/* FORMULARIO */
-
-.alerta_erro {
-  display: flex;
-  justify-content: flex-end;
-}
-
-.card_erro {
-  display: none;
-  background-color: #fff;
-  color: black;
-  width: 230px;
-  position: fixed;
-  border-radius: 4px;
-  border: #8B0000 3px solid; /* Vermelho escuro */
-  padding: 10px;
-  margin-right: 10%;
-}
-
-.card_erro #mensagem_erro {
-  font-weight: 500;
-  font-size: 20px;
-}
-
-.formulario .tipo_campo {
-  font-size: 20px;
-  font-weight: 600 !important;
-}
-
-.formulario {
-  display: flex;
-  flex-direction: column;
-}
-
-input {
-  margin-bottom: 10px;
-  border: 2px solid #8B0000; /* Vermelho escuro */
-  padding: 10px;
-  text-align: center;
-  border-radius: 10px;
-}
-
-.btn {
-  font-family: "Barlow", sans-serif;
-  border: 0;
-  border-radius: 5px;
-  font-weight: 600;
-  font-size: 18px;
-  padding: 10px 15px;
-  color: white;
-  background-color: #8B0000; 
-  width: 120px;
-  align-self: center;
+.footer h6 {
   margin-top: 5px;
 }
-
-
-
-
-

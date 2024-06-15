@@ -17,6 +17,7 @@
 
 <body>
     <div class="header">
+
         <div class="container">
             <h1 class="titulo">Harry Potter Fanpage</h1>
             <ul class="navbar">
@@ -41,6 +42,7 @@
         </div>
     </div>
 
+
     <div class="banner">
         <div class="container">
             <p>
@@ -55,17 +57,21 @@
                 <img src="./assets/imgs/livros.webp" alt="Livros de Harry Potter">
                 <div class="text">
                     <h2>Os Livros de Harry Potter</h2>
-                    <p>A série de livros de Harry Potter é composta por sete volumes, cada um detalhando um ano na vida de Harry enquanto ele frequenta a Escola de Magia e Bruxaria de Hogwarts. Os livros exploram temas de amizade, coragem e a luta entre o bem e o mal.</p>
+                    <p>A série de livros de Harry Potter é composta por sete volumes, cada um detalhando um ano na vida
+                        de Harry enquanto ele frequenta a Escola de Magia e Bruxaria de Hogwarts. Os livros exploram
+                        temas de amizade, coragem e a luta entre o bem e o mal.</p>
                 </div>
             </div>
         </section>
- <!--inverter a ordem dos itens em um flex container na direção da linha (horizontal).-->
+        <!--inverter a ordem dos itens em um flex container na direção da linha (horizontal).-->
         <section class="content-section reverse">
             <div class="text-img">
                 <img src="./assets/imgs/filmes.jpg" alt="Filmes de Harry Potter">
                 <div class="text">
                     <h2>Os Filmes de Harry Potter</h2>
-                    <p>Os livros de Harry Potter foram adaptados para o cinema em uma série de oito filmes, lançados entre 2001 e 2011. Os filmes foram um grande sucesso de bilheteria e ajudaram a expandir ainda mais o universo de Harry Potter, trazendo a magia para as telas do cinema.</p>
+                    <p>Os livros de Harry Potter foram adaptados para o cinema em uma série de oito filmes, lançados
+                        entre 2001 e 2011. Os filmes foram um grande sucesso de bilheteria e ajudaram a expandir ainda
+                        mais o universo de Harry Potter, trazendo a magia para as telas do cinema.</p>
                 </div>
             </div>
         </section>
@@ -75,7 +81,9 @@
                 <img src="./assets/imgs/universo.jpeg" alt="Universo de Harry Potter">
                 <div class="text">
                     <h2>O Universo de Harry Potter</h2>
-                    <p>O universo de Harry Potter vai além dos livros e filmes. Inclui parques temáticos, peças de teatro, jogos de vídeo e uma vasta quantidade de mercadorias. O mundo mágico criado por J.K. Rowling continua a encantar fãs de todas as idades ao redor do mundo.</p>
+                    <p>O universo de Harry Potter vai além dos livros e filmes. Inclui parques temáticos, peças de
+                        teatro, jogos de vídeo e uma vasta quantidade de mercadorias. O mundo mágico criado por J.K.
+                        Rowling continua a encantar fãs de todas as idades ao redor do mundo.</p>
                 </div>
             </div>
         </section>
@@ -85,7 +93,10 @@
                 <img src="./assets/imgs/houses.jpg" alt="Casas de Hogwarts">
                 <div class="text">
                     <h2>As Casas de Hogwarts</h2>
-                    <p>Hogwarts é dividida em quatro casas: Grifinória, Corvinal, Lufa-Lufa e Sonserina. Cada casa tem suas próprias características e valores. Grifinória valoriza a coragem, Corvinal a sabedoria, Lufa-Lufa a lealdade e Sonserina a ambição. Os alunos são selecionados para as casas pelo Chapéu Seletor no início do seu primeiro ano.</p>
+                    <p>Hogwarts é dividida em quatro casas: Grifinória, Corvinal, Lufa-Lufa e Sonserina. Cada casa tem
+                        suas próprias características e valores. Grifinória valoriza a coragem, Corvinal a sabedoria,
+                        Lufa-Lufa a lealdade e Sonserina a ambição. Os alunos são selecionados para as casas pelo Chapéu
+                        Seletor no início do seu primeiro ano.</p>
                 </div>
             </div>
         </section>
@@ -103,187 +114,3 @@
 </body>
 
 </html>
-
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@100;200;300;400;500;600;700;800;900&display=swap');
-
-body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Barlow', "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #2c2c2c; 
-    color: white; 
-}
-
-.container {
-    width: 80%;
-    margin: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Centraliza horizontalmente */
-}
-
-.header {
-    border-bottom: 3px solid #740001; /* Vermelho Grifinória */
-    background-color: #4A2F27; /* Marrom Hogwarts */
-    color: #FFD700;
-    height: auto;
-}
-
-.header .container {
-    justify-content: space-between;
-    align-items: center;
-    display: flex;
-    padding: 20px 0;
-}
-
-.header a {
-    text-decoration: none;
-    color: #FFD700; 
-}
-
-.agora {
-    font-weight: 800;
-}
-
-.navbar {
-    display: flex;
-    align-items: center;
-    list-style: none;
-    gap: 20px;
-}
-
-.titulo {
-    color: #FFD700; 
-    font-weight: 500;
-    font-family: 'Harry Potter', serif;
-}
-
-.banner {
-    padding: 40px 0;
-    color: white;
-    background-image: url("./assets/imgs/bg-castle.avif");
-    background-size: cover;
-    background-color: #000000; 
-    text-align: center;
-    font-size: 50px;
-    height: 100vh;
-}
-
-.banner p {
-    font-size: 24px;
-    margin: 0;
-}
-
-.banner span {
-    color: #B22222; 
-    font-weight: 800;
-}
-
-.social {
-    background-color: #2c2c2c;
-    padding: 40px 0;
-}
-
-.social .container {
-    justify-content: center;
-    display: flex;
-}
-
-.boxes {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-}
-
-.box {
-    margin: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.box img {
-    width: 100px;
-}
-
-.box h4 {
-    margin: 10px 0;
-    color: white; 
-}
-
-.box p {
-    text-align: center;
-    color: #d3d3d3; 
-}
-
-.content {
-    padding: 40px 0;
-    background-color: #000000; 
-    color: white; 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.content-section {
-    display: flex;
-    flex-wrap: wrap;
-    margin-bottom: 40px;
-    justify-content: center; /* Centraliza horizontalmente */
-    max-width: 800px; /* Define uma largura máxima para as seções de conteúdo */
-}
-
-.text-img {
-    display: flex;
-    gap: 20px;
-    align-items: center;
-}
-
-.content-section.reverse .text-img {
-    flex-direction: row-reverse;
-}
-
-.text-img img {
-    width: 300px;
-    border-radius: 10px;
-}
-
-.text {
-    max-width: 600px;
-    text-align: justify;
-}
-
-.text h2 {
-    color: #FFD700; 
-    margin-bottom: 10px;
-}
-
-.text p {
-    text-align: justify;
-}
-
-.footer {
-    background-color: #4A2F27; 
-    height: 150px;
-    color: white; 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 15px;
-}
-
-.footer h4 {
-    margin: 0;
-}
-
-.footer h6 {
-    margin-top: 5px;
-}
-
-.footer .container {
-    justify-content: center;
-    align-items: center;
-    color: #FFD700;
-}
-</style>
