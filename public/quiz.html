@@ -4,46 +4,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz de Hogwarts</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="./css/quiz.css">
     <link rel="icon" href="./assets/icon/icons8-harry-potter-60.png" />
 </head>
 <body>
    <!--header inicio -->
-    <div class="header">
-        <div class="container">
-            <h1 class="titulo">Harry Potter</h1>
-            <ul class="navbar">
-                <li>
-                    <a href="index.html">Home Page</a>
-                </li>
-                <li class="agora">
-                    <a href="quiz.html">Quiz</a>
-                </li>
-                <li>
-                    <a href="sobremim.html">About me</a>
-                </li>
-                <li>|</li>
-                <li>
-                    <a href="login.html">Login</a>
-                </li>
-                <li>
-                    <a href="register.html">Register</a>
-                </li>
-                <li>
-                    <a href="dashboard.html">Dashboard</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-    <!--header fim-->
+   <div class="header">
 
-    <div class="quiz-container">
-        <h1>Descubra sua casa em Hogwarts!</h1>
-        <form id="quiz-form">
-            <!-- As perguntas e respostas serão inseridas aqui via JavaScript -->
-        </form>
-        <button id="submit-btn" class="btn">Enviar</button>
+    <div class="container">
+        <h1 class="titulo">Harry Potter Fanpage</h1>
+
+        <ul class="navbar">
+            <li >
+                <a href="#">Home</a>
+            </li>
+            <li>
+                <a href="./sobremim.html">About me</a>
+            </li>
+            <li class="agora">
+                <a href="./quiz.html">Quiz</a>
+            </li>
+
+        </ul>
+
+        <ul class="navbar">
+            <li>
+                <a href="./login.html">Login</a>
+            </li>
+            <li>
+                <a href="./register.html">Register</a>
+            </li>
+        </ul>
+
     </div>
+</div>
+
+    <section class="quiz">
+        <div class="quiz-container">
+            <h1>Descubra sua casa em Hogwarts!</h1>
+            <form id="quiz-form">
+                <!-- As perguntas e respostas serão inseridas aqui via JavaScript -->
+            </form>
+            <button id="submit-btn" class="btn">Enviar</button>
+        </div>
+    </section>
 
     <!-- Modal de resultado -->
     <div id="result-modal" class="modal">
@@ -67,167 +71,8 @@
 </html>
 
 
-<style>@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+<style>
 
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Barlow', "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #2c2c2c; 
-      color: #e3b062; 
-    }
-    
-    .container {
-      width: 80%;
-      margin: auto;
-      display: flex;
-    }
-    
-    .header {
-      border-bottom: 3px solid #740001; 
-      background-color: #4A2F27; 
-      color: #e3b062; 
-    }
-    
-    .header .container {
-      justify-content: space-between;
-    }
-    
-    .header a {
-      text-decoration: none;
-      color: #e3b062; 
-    }
-    
-    .agora {
-      font-weight: 800;
-    }
-    
-    .navbar {
-      width: 300px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      list-style: none;
-      color: #e3b062; 
-    }
-    
-    .titulo {
-      color: #FFD700; 
-      width: fit-content;
-      font-weight: 500;
-      font-family: 'Harry Potter', serif;
-    }
-    
-    .quiz-container {
-      width: 50%;
-      margin: auto;
-      background-color: #4A2F27; 
-      color: #e3b062;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-      text-align: center;
-    }
-    
-    .quiz-container h1 {
-      margin-bottom: 20px;
-    }
-    
-    .question {
-      margin-bottom: 20px;
-    }
-    
-    .question h3 {
-      margin-bottom: 10px;
-    }
-    
-    label {
-      display: block;
-      margin-bottom: 5px;
-    }
-    
-    input[type="radio"] {
-      margin-right: 10px;
-    }
-    
-    button {
-      cursor: pointer;
-      font-family: "Barlow", sans-serif;
-      border: 0;
-      border-radius: 5px;
-      font-weight: 600;
-      font-size: 18px;
-      padding: 10px 15px;
-      color: white;
-      background-color: #9c151c; 
-      width: 120px;
-      align-self: center;
-      margin-top: 5px;
-    }
-    
-    #result {
-      margin-top: 20px;
-      font-weight: bold;
-    }
-    
-    .footer {
-      background-color: #4A2F27; 
-      height: 150px;
-      color: #e3b062; 
-      display: flex;
-      font-size: 15px;
-    }
-    
-    .footer .container {
-      justify-content: center;
-    }
-    
-    .footer h4 {
-      margin: 0;
-    }
-    
-    .footer .version {
-      margin-top: 10px;
-    }
-    
-    /* Modal de resultado */
-    .modal {
-      display: none; /* Escondido por padrão */
-      position: fixed; /* Fixo na tela */
-      z-index: 1; /* Fica na frente de outros elementos */
-      left: 0;
-      top: 0;
-      width: 100%; 
-      height: 100%; 
-      overflow: auto; /* Habilita rolagem se necessário */
-      background-color: rgb(0,0,0); 
-      background-color: rgba(0,0,0,0.4); 
-    }
-    
-    .modal-content {
-      background-color: #4A2F27; /* Marrom Hogwarts */
-      margin: 15% auto; /* 15% do topo e centralizado */
-      padding: 20px;
-      border: 1px solid #888;
-      width: 80%; /* Largura do modal */
-      color: #e3b062; 
-      border-radius: 10px;
-    }
-    
-    .close-btn {
-      color: #e3b062; 
-      float: right;
-      font-size: 28px;
-      font-weight: bold;
-    }
-    
-    .close-btn:hover,
-    .close-btn:focus {
-      color: #FFD700; 
-      text-decoration: none;
-      cursor: pointer;
-    }
-    
     </style>
 
     <script>

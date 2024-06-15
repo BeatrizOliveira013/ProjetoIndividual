@@ -137,16 +137,23 @@ body {
 
 .btn {
     cursor: pointer;
-    font-family: "Exo 2", sans-serif;
+    font-family: "Barlow", sans-serif;
     border: 0;
+    font-weight: 800;
     border-radius: 5px;
     font-weight: 600;
     font-size: 18px;
-    color: #FFFFFF;
-    background-color: #8B0000;
+    padding: 10px 15px;
+    color: white;
+    background-color: #9c151c;
     width: 120px;
     align-self: center;
-    margin-top: 20px;
+    margin-top: 24px;
+    transition: transform .3s;
+}
+.btn:hover {
+    transform: scale(1.1);
+    color: #FFD700;
 }
 
 .loading-div {
