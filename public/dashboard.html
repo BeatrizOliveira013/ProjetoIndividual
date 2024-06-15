@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard do Quiz</title>
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+    <!--header inicio -->
+    <div class="header">
+        <div class="container">
+            <h1 class="titulo">Harry Potter</h1>
+            <ul class="navbar">
+                <li>
+                    <a href="index.html">Home Page</a>
+                </li>
+                <li class="agora">
+                    <a href="quiz.html">Quiz</a>
+                </li>
+                <li>
+                    <a href="sobremim.html">About me</a>
+                </li>
+                <li>|</li>
+                <li>
+                    <a href="login.html">Login</a>
+                </li>
+                <li>
+                    <a href="register.html">Register</a>
+                </li>
+                <li>
+                    <a href="dashboard.html">Dashboard</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!--header fim-->
+
+    <div class="container dashboard">
+        <h1>Dashboard do Quiz</h1>
+
+        <!-- KPIs -->
+        <div class="kpi-container">
+            <div class="kpi" id="kpi-total">Total de Participantes: <span></span></div>
+            <div class="kpi" id="kpi-most-popular">Casa Mais Popular: <span></span></div>
+            <div class="kpi" id="kpi-participation">Participação por Casa: <span></span></div>
+        </div>
+
+        <!-- Gráfico de Barras -->
+        <div class="chart-container">
+            <canvas id="quizChart"></canvas>
+        </div>
+
+        <!-- Gráfico de Pizza -->
+        <div class="chart-container">
+            <canvas id="pieChart"></canvas>
+        </div>
+    </div>
+
+    <!--footer inicio-->
+    <div class="footer">
+        <div class="container">
+            <h4> &hearts; Harry Potter Fanpage &copy; 2023</h4>
+            <span class="version">v1.0.0</span>
+        </div>
+    </div>
+    <!--footer fim-->
+
+
+    <!--biblioteca chart.js para os grafics-->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- fetch() para obter os resultados do quiz de uma API local (http://localhost:/api/results).-->
+    <script>
+fetch('http://localhost:8080/results/all')  // 
+    .then(response => response.json())
+    .then(data => {
+        // Cria um objeto que armazenará a contagem de cada casa do quiz
+        const houseCounts = {
+            'Grifinória': 0,
+            'Corvinal': 0,
+            'Lufa-Lufa': 0,
+            'Sonserina': 0
+        };
+
+        // Itera sobre cada resultado do quiz
+        data.forEach(result => {
+            // Incrementa a contagem da casa correspondente para cada resultado
+            houseCounts[result.house]++;
+        });
+
+        // Calcula o número total de participantes no quiz
+        const totalParticipants = data.length;
+
+        // Identifica a casa mais popular com base na contagem de participantes
+        const mostPopularHouse = Object.keys(houseCounts).reduce((a, b) => houseCounts[a] > houseCounts[b] ? a : b);
+
+        // Atualiza o total de participantes exibido no painel do dashboard
+        document.getElementById('kpi-total').querySelector('span').innerText = totalParticipants;
+
+        // Atualiza a casa mais popular exibida no painel do dashboard
+        document.getElementById('kpi-most-popular').querySelector('span').innerText = mostPopularHouse;
+
+        // Calcula a participação percentual de cada casa no quiz e formata os resultados
+        const participationPercentages = Object.keys(houseCounts).map(house => {
+            return `${house}: ${(houseCounts[house] / totalParticipants * 100).toFixed(2)}%`;
+        }).join(', ');
+
+
+
+
+
+
+
+
+
+
+
+        
+
+        // Atualiza a participação por casa exibida no painel do dashboard
+        document.getElementById('kpi-participation').querySelector('span').innerText = participationPercentages;
+
+        // Gráfico de Barras
+        const ctx = document.getElementById('quizChart').getContext('2d');
+        const quizChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: Object.keys(houseCounts),
+                datasets: [{
+                    label: 'Resultados do Quiz',
+                    data: Object.values(houseCounts),
+                    backgroundColor: [
+                        'rgba(139, 0, 0, 0.8)',    
+                        'rgba(0, 0, 139, 0.8)',    
+                        'rgba(139, 139, 0, 0.8)',  
+                        'rgba(0, 77, 77, 0.8)'    
+                    ],
+                    borderColor: [
+                        'rgba(139, 0, 0, 1)',      
+                        'rgba(0, 0, 139, 1)',      
+                        'rgba(139, 139, 0, 1)',    
+                        'rgba(0, 77, 77, 1)'       
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        // Gráfico de Pizza
+        const ctxPie = document.getElementById('pieChart').getContext('2d');
+        const pieChart = new Chart(ctxPie, {
+            type: 'pie',
+            data: {
+                labels: Object.keys(houseCounts),
+                datasets: [{
+                    label: 'Distribuição das Casas',
+                    data: Object.values(houseCounts),
+                    backgroundColor: [
+                        'rgba(139, 0, 0, 0.8)',    
+                        'rgba(0, 0, 139, 0.8)',    
+                        'rgba(139, 139, 0, 0.8)',  
+                        'rgba(0, 77, 77, 0.8)'    
+                    ],
+                    borderColor: [
+                        'rgba(139, 0, 0, 1)',    
+                        'rgba(0, 0, 139, 1)',    
+                        'rgba(139, 139, 0, 1)',   
+                        'rgba(0, 77, 77, 1)'       
+                    ],
+                    borderWidth: 1
+                }]
+            }
+        });
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+</script>
+</body>
+</html>
+<!-- <style>
+
+@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Barlow', "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: black; 
+  color: #ffffff; 
+}
+
+.container {
+  width: 80%;
+  margin: auto;
+  text-align: center;
+}
+
+.header {
+  border-bottom: 3px solid #FFD700; 
+  background-color: #4A2F27; 
+  color: #FFD700; 
+}
+
+.header .container {
+  justify-content: space-between;
+}
+
+.header a {
+  text-decoration: none;
+  color: #FFD700; 
+}
+
+.agora {
+  font-weight: 800;
+}
+
+.navbar {
+  width: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  list-style: none;
+  color: #FFD700; 
+}
+
+.titulo {
+  color: #FFD700; 
+  width: fit-content;
+  font-weight: 500;
+  font-family: 'Harry Potter', serif; 
+}
+
+.dashboard h1 {
+  color: #FFD700;
+}
+
+.kpi-container {
+  display: flex;
+  justify-content: space-around;
+  margin: 20px 0;
+}
+
+.kpi {
+  background-color: black; 
+  border: 2px solid #FFD700; 
+  padding: 10px;
+  border-radius: 10px;
+  width: 30%;
+  text-align: center;
+  font-size: 1.2em;
+}
+
+.chart-container {
+  width: 100%;
+  height: 400px;
+  background-color: #d1c2be; /*
+  padding: 20px;
+  border-radius: 10px;
+  color: #FFD700; /* Dourado */
+}
+
+.footer {
+  background-color: black; 
+  height: 150px;
+  color: #FFD700; 
+  display: flex;
+  font-size: 15px;
+}
+
+.footer .container {
+  justify-content: center;
+}
+
+.footer h4 {
+  margin: 0;
+}
+
+.footer .version {
+  margin-top: 10px;
+}
+
+
+</style> -->
