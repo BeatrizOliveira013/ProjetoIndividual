@@ -30,14 +30,14 @@ body {
 
 .container {
   display: flex;
-  width: 80%;
+  width: 85%;
   margin: auto;
-  flex-direction: column;
   align-items: center;
 }
 
 /* HEADER */
 .header {
+  width: 100%;
   border-bottom: 3px solid #740001;
   background-color: #4A2F27;
   color: #FFD700;
@@ -51,68 +51,41 @@ body {
   padding: 20px 0;
 }
 .header .navbar {
-  width: 300px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  align-items: center;
   list-style: none;
-  color: #FFD700;
+  gap: 16px;
+}
+.header .navbar a {
+  text-decoration: none;
+  color: #ecbf77;;
 }
 
 .header .titulo {
   color: #8B0000;
   width: fit-content;
+  font-size: 40px;
+  color: #ecbf77;
   font-weight: 500;
-  font-family: 'Harry Potter', serif;
+  font-family: 'Harry-font', serif;
 }
-.header a {
-  text-decoration: none;
-  color: #FFD700;
+.header .navbar a:hover {
+  font-weight: 800;
 }
 
-header h1 {
+.header h1 {
   margin: 0;
 }
 
-.agora {
+.header .agora {
   font-weight: 800;
-}
-
-header {
-  height: var(--tamanho-header);
-  border-bottom: 2px solid #FFD700;
-}
-
-header .container {
-  justify-content: space-between;
-  align-items: center;
-  height: 100%;
-}
-
-header a {
-  text-decoration: none;
-  color: #FFD700;
-}
-
-.agora {
-  font-weight: 800;
-}
-
-.navbar {
-  display: flex;
-  align-items: center;
-  list-style: none;
-  gap: 20px;
-}
-
-.titulo {
-  color: #FFD700;
-  font-weight: 500;
-  font-family: 'Harry Potter', serif;
 }
 
 /* BANNER */
 .banner {
+  position: relative;
   padding: 40px 0;
   color: white;
   background-image: url("../assets/imgs/bg-castle.avif");
@@ -122,6 +95,16 @@ header a {
   font-size: 50px;
   height: 100vh;
 }
+.banner::before {
+  content: "";
+  position: absolute;
+  height: 100px;
+  width: 100%;
+  bottom: 0;
+  z-index: 2;
+  left: 0;
+  background: linear-gradient(to top, #000, transparent);
+}
 
 .banner .container {
   justify-content: center;
@@ -130,24 +113,40 @@ header a {
 }
 
 .banner .container p {
-  width: 50%;
-  margin: 0;
-  padding: 0;
-  font-size: 36px;
-}
-
-.banner .container span {
+  width: 40%;
+  font-size: 40px;
   font-weight: 800;
+  text-shadow: 4px 6px 12px #000;
+  -webkit-animation: text-focus-in 1.2s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+	animation: text-focus-in 1.2s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
 }
-
-.banner p {
-  font-size: 24px;
-  margin: 0;
+@-webkit-keyframes text-focus-in {
+  0% {
+    -webkit-filter: blur(12px);
+            filter: blur(12px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-filter: blur(0px);
+            filter: blur(0px);
+    opacity: 1;
+  }
 }
-
+@keyframes text-focus-in {
+  0% {
+    -webkit-filter: blur(12px);
+            filter: blur(12px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-filter: blur(0px);
+            filter: blur(0px);
+    opacity: 1;
+  }
+}
 .banner span {
   color: #B22222;
-  font-weight: 800;
+  text-transform: uppercase;
 }
 
 .content {
