@@ -195,27 +195,22 @@ body {
   text-align: justify;
 }
 
-/* FOOTER */
 .footer {
   background-color: #4A2F27;
   height: 150px;
-  color: white;
+  color: #e3b062;
   display: flex;
-  justify-content: center;
-  align-items: center;
   font-size: 15px;
 }
 
 .footer .container {
   justify-content: center;
-  align-items: center;
-  color: #FFD700;
 }
 
 .footer h4 {
   margin: 0;
 }
 
-.footer h6 {
-  margin-top: 5px;
+.footer .version {
+  margin-top: 10px;
 }

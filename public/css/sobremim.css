@@ -179,15 +179,25 @@ body {
     color: #d3d3d3;
 }
 
-/* FOOTER */
-
 .footer {
-    background-color: #4A2F27;
-    color: black;
-    padding: 20px 0;
-    text-align: center;
+  background-color: #4A2F27;
+  height: 150px;
+  color: #e3b062;
+  display: flex;
+  font-size: 15px;
+
 }
 
 .footer .container {
-    justify-content: center;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+}
+
+.footer h4 {
+  margin: 0;
+}
+
+.footer .version {
+  margin-top: 10px;
 }

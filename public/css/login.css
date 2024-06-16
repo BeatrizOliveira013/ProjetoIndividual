@@ -213,17 +213,20 @@ input {
 
 .footer {
     background-color: #4A2F27;
-    height: 65px;
-    color: #FFD700;
+    height: 150px;
+    color: #e3b062;
     display: flex;
     font-size: 15px;
-}
-
-.footer .container {
+  }
+  
+  .footer .container {
     justify-content: center;
-    text-align: center;
-}
-
-.footer .container .version {
-    font-size: 12px;
-}
+  }
+  
+  .footer h4 {
+    margin: 0;
+  }
+  
+  .footer .version {
+    margin-top: 10px;
+  }
