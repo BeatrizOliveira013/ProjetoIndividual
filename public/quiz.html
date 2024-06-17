@@ -8,36 +8,21 @@
     <link rel="icon" href="./assets/icon/icons8-harry-potter-60.png" />
 </head>
 <body>
-   <!--header inicio -->
-   <div class="header">
-
-    <div class="container">
-        <h1 class="titulo">Harry Potter Fanpage</h1>
-
-        <ul class="navbar">
-            <li >
-                <a href="#">Home</a>
-            </li>
-            <li>
-                <a href="./sobremim.html">About me</a>
-            </li>
-            <li class="agora">
-                <a href="./quiz.html">Quiz</a>
-            </li>
-
-        </ul>
-
-        <ul class="navbar">
-            <li>
-                <a href="./login.html">Login</a>
-            </li>
-            <li>
-                <a href="./register.html">Register</a>
-            </li>
-        </ul>
-
+    <!--header inicio -->
+    <div class="header">
+        <div class="container">
+            <h1 class="titulo">Harry Potter Fanpage</h1>
+            <ul class="navbar">
+                <li><a href="./index.html">Home</a></li>
+                <li><a href="./sobremim.html">About me</a></li>
+                <li class="agora"><a href="./quiz.html">Quiz</a></li>
+            </ul>
+            <ul class="navbar">
+                <li><a href="./login.html">Login</a></li>
+                <li><a href="./register.html">Register</a></li>
+            </ul>
+        </div>
     </div>
-</div>
 
     <section class="quiz">
         <div class="quiz-container">
@@ -46,16 +31,9 @@
                 <!-- As perguntas e respostas serão inseridas aqui via JavaScript -->
             </form>
             <button id="submit-btn" class="btn">Enviar</button>
+            <div id="result-container" class="result-container"></div>
         </div>
     </section>
-
-    <!-- Modal de resultado -->
-    <div id="result-modal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn">&times;</span>
-            <p id="result-text"></p>
-        </div>
-    </div>
 
     <!--footer inicio-->
     <div class="footer">
@@ -69,6 +47,8 @@
     <script src="script.js"></script>
 </body>
 </html>
+
+
 
     <script>
 const quizData = [
@@ -171,7 +151,6 @@ document.addEventListener("DOMContentLoaded", () => {
         const questionDiv = document.createElement('div');
         questionDiv.classList.add('question'); 
 
-
         const questionTitle = document.createElement('h3');
         questionTitle.innerText = item.question;
         questionDiv.appendChild(questionTitle);
@@ -207,8 +186,6 @@ document.getElementById('submit-btn').addEventListener('click', () => {
         'Sonserina': 0
     };
 
-    
-
     answers.forEach((answer, index) => {
         const selectedHouse = quizData[index].house[answer.value];
         houseScores[selectedHouse]++;
@@ -226,27 +203,29 @@ document.getElementById('submit-btn').addEventListener('click', () => {
     }).then(response => response.json())
       .then(data => {
           console.log('Success:', data);
-          // Mostrar o modal com o resultado
-          const modal = document.getElementById("result-modal");
-          const resultText = document.getElementById("result-text");
-          resultText.innerText = `Você pertence à casa: ${resultHouse}`;
-          modal.style.display = "block";
+          // Mostrar o resultado via innerHTML com imagem
+          const resultContainer = document.getElementById("result-container");
+          let resultHTML = '<img src="./assets/imgs/chapeuSeletor.png" alt="Chapéu Seletor" style="width:100px; height:auto;">';
+          resultHTML += `<h2>"Parabéns, Você pertence à casa: ${resultHouse} !!!"</h2>`;
+          
+          // Adicionar imagem correspondente a casa da ´pessoa
+          let houseImage;
+          if (resultHouse === 'Grifinória') {
+              houseImage = './assets/imgs/grifi.png';
+          } else if (resultHouse === 'Corvinal') {
+              houseImage = './assets/imgs/corvinal.webp';
+          } else if (resultHouse === 'Lufa-Lufa') {
+              houseImage = './assets/imgs/lufalufa.webp';
+          } else if (resultHouse === 'Sonserina') {
+              houseImage = './assets/imgs/sonserina.png';
+          }
+          
+          resultHTML += `<img src="${houseImage}" alt="${resultHouse}" style="width:200px; height:auto;">`;
+          resultContainer.innerHTML = resultHTML;
       })
       .catch((error) => {
           console.error('Error:', error);
       });
 });
-
-document.querySelector(".close-btn").addEventListener('click', () => {
-    document.getElementById("result-modal").style.display = "none";
-});
-
-window.addEventListener('click', (event) => {
-    const modal = document.getElementById("result-modal");
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-});
-
 
     </script>

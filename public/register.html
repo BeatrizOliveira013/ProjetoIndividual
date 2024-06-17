@@ -8,10 +8,8 @@
 </head>
 <body>
   <div class="header">
-
     <div class="container">
         <h1 class="titulo">Harry Potter Fanpage</h1>
-
         <ul class="navbar">
             <li >
                 <a href="./index.html">Home</a>
@@ -22,103 +20,101 @@
             <li>
                 <a href="./quiz.html">Quiz</a>
             </li>
-
         </ul>
-        
-            <ul class="navbar">
-                <li>
-                    <a href="./login.html">Login</a>
-                </li>
-                <li class="agora">
-                    <a href="./register.html">Register</a>
-                </li>
-            </ul>
-        
+        <ul class="navbar">
+            <li>
+                <a href="./login.html">Login</a>
+            </li>
+            <li class="agora">
+                <a href="./register.html">Register</a>
+            </li>
+        </ul>
     </div>
 </div>
 
-    <section class="form">
-      <div class="container">
-          <h1>Cadastro de Usuário</h1>
-          <div class="formulario">
-              <!-- Formulário de cadastro de usuário -->
-              <label for="username">Nome de Usuário:</label>
-              <input type="text" id="username" required>
-              <label for="email">Email:</label>
-              <input type="text" id="email" required>
-              <label for="password">Criar senha:</label>
-              <input type="password" id="password" required>
-              <button id="register-btn" class="btn">Cadastrar</button>
-          </div>
-          <div id="message"></div>
+<section class="form">
+  <div class="container">
+  
+      <div class="formulario">
+        <h1>Cadastre-se</h1>
+          <!-- Formulário de cadastro de usuário -->
+          <label for="username">Nome de Usuário:</label>
+          <input type="text" id="username" required>
+          <label for="email">Email:</label>
+          <input type="text" id="email" required>
+          <label for="password">Criar senha:</label>
+          <input type="password" id="password" required>
+          <button id="register-btn" class="btn">Cadastrar</button>
       </div>
-    </section>
+      <div id="message"></div>
+  </div>
+</section>
 
-     <!--footer inicio-->
-     <div class="footer">
-        <div class="container">
-            <h4> &hearts; Harry Potter Fanpage &copy; 2023</h4>
-            <span class="version">v1.0.0</span>
-        </div>
+<!--footer inicio-->
+<div class="footer">
+    <div class="container">
+        <h4> &hearts; Harry Potter Fanpage &copy; 2023</h4>
+        <span class="version">v1.0.0</span>
     </div>
-    <!--footer fim-->
+</div>
+<!--footer fim-->
 
-    <script>
-        document.getElementById('register-btn').addEventListener('click', function() {
-            // Obtendo os valores dos campos do formulário
-            const username = document.getElementById('username').value;
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
-            const messageDiv = document.getElementById('message');
-            
-            messageDiv.innerText = ""; // Limpar divvv
+<script>
+    document.getElementById('register-btn').addEventListener('click', function() {
+        // Obtendo os valores dos campos do formulário
+        const username = document.getElementById('username').value;
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+        const messageDiv = document.getElementById('message');
+        
+        messageDiv.innerText = ""; // Limpar mensagem
 
-            
-            if (email.indexOf('@') === -1 || email.indexOf('.') === -1 || email.indexOf(' ') !== -1 || email.length < 5) {
-                messageDiv.innerText = "Por favor, insira um email válido.";
-            } else if (password.length < 8) { 
-                messageDiv.innerText = "A senha deve ter pelo menos 8 caracteres.";
-            } else {
-                
-                let hasNumber = false;
-                let hasLetter = false;
-                for (let i = 0; i < password.length; i++) {
-                    if (password[i] >= '0' && password[i] <= '9') {
-                        hasNumber = true;
-                    } else if ((password[i] >= 'a' && password[i] <= 'z') || (password[i] >= 'A' && password[i] <= 'Z')) {
-                        hasLetter = true;
-                    }
-                }
+        // Validação de email
+        if (email.indexOf('@') === -1 || email.indexOf('.') === -1 || email.indexOf(' ') !== -1 || email.length < 5) {
+            messageDiv.innerText = "Por favor, insira um email válido.";
+        } else if (password.length < 8) { 
+            messageDiv.innerText = "A senha deve ter pelo menos 8 caracteres.";
+        } else {
+            // Verificação de número, letra e caractere especial
+            let hasNumber = false;
+            let hasLetter = false;
+            let hasSpecialChar = false;
+            const specialChars = "!@#$%^&*()_+[]{}|;':,.<>?";
 
-
-                if (!hasNumber || !hasLetter) {
-                    messageDiv.innerText = "A senha deve conter pelo menos uma letra e um número.";
-                } else {
-                    // Enviar dados para a API usando fetch
-                    fetch('http://localhost:8080/users/register', {  // URL da API
-                        method: 'POST', // Método HTTP
-                        headers: {
-                            'Content-Type': 'application/json' // Tipo de conteúdo JSON
-                        },
-                        body: JSON.stringify({ username, email, password }) // Corpo da requisição em formato JSON
-                    })
-                    .then(response => response.json()) 
-                    .then(data => {
-                        // Exibe a mensagem de sucesso ou erro retornada pela API
-                        messageDiv.innerText = data.message;
-                    })
-                    .catch(error => {
-                        // Exibe uma mensagem de erro no console e na página
-                        console.error('Error:', error);
-                        messageDiv.innerText = "Erro no cadastro";
-                    });
+            for (let i = 0; i < password.length; i++) {
+                if (password[i] >= '0' && password[i] <= '9') {
+                    hasNumber = true;
+                } else if ((password[i] >= 'a' && password[i] <= 'z') || (password[i] >= 'A' && password[i] <= 'Z')) {
+                    hasLetter = true;
+                } else if (specialChars.indexOf(password[i]) !== -1) {
+                    hasSpecialChar = true;
                 }
             }
-        });
-    </script>
-</body>
-</html>
 
+            if (!hasNumber || !hasLetter || !hasSpecialChar) {
+                messageDiv.innerText = "A senha deve conter pelo menos uma letra, um número e um caractere especial.";
+            } else {
+                // Enviar dados para a API usando fetch
+                fetch('http://localhost:8080/users/register', {  // URL da API
+                    method: 'POST', // Método HTTP
+                    headers: {
+                        'Content-Type': 'application/json' // Tipo de conteúdo JSON
+                    },
+                    body: JSON.stringify({ username, email, password }) // Corpo da requisição em formato JSON
+                })
+                .then(response => response.json()) 
+                .then(data => {
+                    // Exibe a mensagem de sucesso ou erro retornada pela API
+                    messageDiv.innerText = data.message;
+                })
+                .catch(error => {
+                    // Exibe uma mensagem de erro no console e na página
+                    console.error('Error:', error);
+                    messageDiv.innerText = "Erro no cadastro";
+                });
+            }
+        }
+    });
+</script>
 </body>
 </html>
- 
